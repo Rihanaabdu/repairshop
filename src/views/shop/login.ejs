@@ -1,0 +1,25 @@
+<body class="bg-neutral-700 h-screen w-screen text-white overflow-hidden">
+    <%- include('../partials/header.ejs') %>
+    <div class="w-full flex flex-col items-center">
+        <form action="/" method="post" class="sm:w-120">
+            <div class="flex flex-col relative">
+                <label for="username" class="mb-[1px] text-[16px]">Username</label>
+                <input type="text" id="username" name="username" class=" h-10 text-lg dark:bg-neutral-700"
+                placeholder="Username">
+            </div>
+            <div class="flex flex-col relative pb-3">
+                <label for="password" class="mb-[1px] text-[16px]">Password</label>
+            <input type="password" id="password" name="password" class=" h-10 text-lg dark:bg-neutral-700 pr-10"
+                placeholder="Password">
+                <% if (error) {%>
+                    <%=error%>
+                    <% } %>
+                </div>
+                <div class="flex justify-center">
+                    <button class="py-1.5 w-40 bg-teal-700 text-white">
+                        Sign in
+                    </button>
+                </div>
+            </form>
+    </div>
+</body>
