@@ -16,5 +16,6 @@ router.get('/logout', (req, res, next)=>{
 })
 router.post('/admin', guard.noAuth, controller.adminLogin);
 router.post('/', guard.noAuth, controller.staffLogin);
+router.post('/register/staff', guard.noAuth, controller.staffRegister);
 
 module.exports = router

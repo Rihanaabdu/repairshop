@@ -43,6 +43,7 @@ const staffRegister = async (req, res, next)=>{
             password
         }
     })
+    console.log(staff);
     if(!staff) return res.render('shop/register.ejs',{error: "Invalid credentials", user: req.session.user});
     let check = bcrypt.compareSync(password, staff.password)
     if (!check)res.render('shop/register.ejs',{error: "Invalid credentials", user: req.session.user});
