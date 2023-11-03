@@ -762,11 +762,6 @@ select {
   background-color: rgb(64 64 64 / var(--tw-bg-opacity));
 }
 
-.bg-red-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
-}
-
 .bg-teal-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(15 118 110 / var(--tw-bg-opacity));
@@ -820,9 +815,5 @@ select {
 @media (min-width: 640px) {
   .sm\:w-120 {
     width: 30rem;
-  }
-
-  .sm\:w-144 {
-    width: 36rem;
   }
 }

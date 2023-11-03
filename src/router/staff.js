@@ -3,6 +3,10 @@ const controller = require('../controller/user.controller.js')
 router.get('/', (req, res, next)=>{
     res.render('shop/login.ejs', {error:null})
 })
-router.post('/', controller.staffLogin)
+router.get('/admin', (req, res, next)=>{
+    res.render('shop/admin.ejs', {error:null})
+})
+router.post('/', controller.adminLogin);
+router.post('/', controller.staffLogin);
 
 module.exports = router
