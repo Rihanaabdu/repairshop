@@ -1,2 +1,18 @@
 <%- include('./head.ejs')%>
-<div class="h-12 shadow"></div>
+<div class="flex h-12 shadow items-center mb-2">
+    <nav class="flex items-center">
+        <% if(!user) {%>
+        <a class="w-16" href="/admin">Admin</a>
+        <a class="w-16" href="/">Staff</a>
+        <%}%>
+        <% if(user && user.type == 'admin') {%>
+            <a class="w-28" href="/admin">Register staff</a>
+            <a class="w-16" href="/logout">Logout</a>
+        <%}%>
+        <% if(user && user.type == 'staff') {%>
+            <a class="w-16" href="/items">Items</a>
+            <a class="w-24" href="/admin">Register item</a>
+            <a class="w-16" href="/logout">Logout</a>
+        <%}%>
+    </nav>
+</div>

@@ -1,0 +1,37 @@
+<body class="bg-neutral-700 h-screen w-screen text-white overflow-hidden">
+    <%- include('../partials/header.ejs') %>
+    <div class="w-full flex flex-col items-center">
+        <div class="sm:w-120">
+            <%if (items) {%>
+            <div class="flex border-b-1[px]">
+                <div class="text-sm w-24">Type</div>
+                <div class="text-sm w-20">Brand</div>
+                <div class="text-sm w-28">Model</div>
+                <div class="text-sm w-28">Action</div>
+            </div>
+            <%}%>
+            <% for( let i = 0; i < items.length; i++ ) { %>
+                <div class="flex border-b-1[px] <%if(i%2==0)%>bg-neutral-800<%}%>">
+                    <div class="text-sm w-24"><%=%></div>
+                    <div class="text-sm w-20"><%=%></div>
+                    <div class="text-sm w-28"><%=%></div>
+                    <div class="text-sm w-28">
+                        <% if(items[i].status == 'Completed') {%>
+                            Nothing
+                        <% } %>
+                        <% if(items[i].status == 'Active') {%>
+                            <form action="/item/complete" method="post">
+                                <button type="submit" class="bg-teal-700">Complete</button>
+                            </form>
+                        <% } %>
+                        <% if(items[i].status == 'Pending') {%>
+                            <form action="/item/work" method="post">
+                                <button type="submit" class="bg-teal-700">Active</button>
+                            </form>
+                        <% } %>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>

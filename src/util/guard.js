@@ -1,6 +1,6 @@
-import prisma from "./prisma";
+const prisma = require('./prisma.js')
 
-export const adminAuth = async (req, res, next)=>{
+const adminAuth = async (req, res, next)=>{
     if (!req.user) return res.redirect('/');
     let admin = await prisma.admin.findUnique({
         where: {
@@ -8,8 +8,9 @@ export const adminAuth = async (req, res, next)=>{
         }
     })
     if(!admin) return res.redirect('/');
+    next()
 }
-export const staffAuth = async (req, res, next)=>{
+const staffAuth = async (req, res, next)=>{
     if (!req.user) return res.redirect('/');
     let admin = await prisma.staff.findUnique({
         where: {
@@ -17,4 +18,15 @@ export const staffAuth = async (req, res, next)=>{
         }
     })
     if(!admin) return res.redirect('/');
+    next()
+}
+const noAuth = async (req, res, next)=>{
+    if (req.session.user && req.session.user.type == 'admin') return res.redirect('/register/staff');
+    if (req.session.user && req.session.user.type == 'staff') return res.redirect('/add');
+    next()
+}
+module.exports = {
+    adminAuth,
+    staffAuth,
+    noAuth
 }

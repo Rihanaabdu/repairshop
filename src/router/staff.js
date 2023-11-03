@@ -1,12 +1,20 @@
 const router = require('express').Router();
-const controller = require('../controller/user.controller.js')
-router.get('/', (req, res, next)=>{
-    res.render('shop/login.ejs', {error:null})
+const controller = require('../controller/user.controller.js');
+const guard = require('../util/guard.js')
+router.get('/', guard.noAuth,(req, res, next)=>{
+    res.render('shop/login.ejs', {error:null, user: req.session.user})
 })
-router.get('/admin', (req, res, next)=>{
-    res.render('shop/admin.ejs', {error:null})
+router.get('/admin', guard.noAuth,(req, res, next)=>{
+    res.render('shop/admin.ejs', {error:null, user: req.session.user})
 })
-router.post('/', controller.adminLogin);
-router.post('/', controller.staffLogin);
+router.get('/register/staff', guard.adminAuth,(req, res, next)=>{
+    res.render('shop/register.ejs', {error:null, user: req.session.user})
+})
+router.get('/logout', (req, res, next)=>{
+    req.session.user = null;
+    res.redirect('/')
+})
+router.post('/admin', guard.noAuth, controller.adminLogin);
+router.post('/', guard.noAuth, controller.staffLogin);
 
 module.exports = router

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/f998d2c3-d89e-48ea-9975-322499356122/resourceGroups/Nedamco-Academy-Second-Phase/providers/Microsoft.Web/sites/repairshopriri",
+    "appService.deploySubpath": "."
+}
