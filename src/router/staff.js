@@ -7,7 +7,7 @@ router.get('/', guard.noAuth,(req, res, next)=>{
 router.get('/admin', guard.noAuth,(req, res, next)=>{
     res.render('shop/admin.ejs', {error:null, user: req.session.user})
 })
-router.get('/register/staff', guard.adminAuth,(req, res, next)=>{
+router.get('/register/staff', guard.adminAuth, (req, res, next)=>{
     res.render('shop/register.ejs', {error:null, user: req.session.user})
 })
 router.get('/logout', (req, res, next)=>{
